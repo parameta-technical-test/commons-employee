@@ -21,6 +21,6 @@ public class BlacklistTokenEntity {
     @JoinColumn(name = "code_administrator_user", nullable = false)
     private AdministratorUserEntity administratorUser;
 
-    @Column(name = "date_create", nullable = false)
+    @Column(name = "date_create")
     private Date dateCreate;
 }
