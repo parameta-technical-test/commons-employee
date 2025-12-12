@@ -5,10 +5,7 @@ import co.parameta.tecnical.test.commons.entity.BlacklistTokenEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface BlacklistTokenMapper {
+public interface BlacklistTokenMapper  extends BaseMapper<BlacklistTokenEntity, BlacklistTokenDTO>{
 
-    BlacklistTokenDTO entityToDto(BlacklistTokenEntity blacklistTokenEntity);
-
-    BlacklistTokenEntity dtoToEntity(BlacklistTokenDTO blacklistTokenDTO);
 
 }

@@ -42,7 +42,7 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         AdministratorUserDTO administratorUser = new AdministratorUserDTO();
         administratorUser.setCode(iJwtService.getCodeFromToken(token));
         blacklistTokenDTO.setAdministratorUser(administratorUser);
-        blacklistTokenRepository.save(blacklistTokenMapper.dtoToEntity(blacklistTokenDTO));
+        blacklistTokenRepository.save(blacklistTokenMapper.toEntity(blacklistTokenDTO));
 
         return respuesta;
     }

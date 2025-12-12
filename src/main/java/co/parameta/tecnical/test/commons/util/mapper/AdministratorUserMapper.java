@@ -5,10 +5,6 @@ import co.parameta.tecnical.test.commons.entity.AdministratorUserEntity;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface AdministratorUserMapper {
-
-    AdministratorUserDTO entityToDto(AdministratorUserEntity administratorUserEntity);
-
-    AdministratorUserEntity dtoToEntity(AdministratorUserDTO administratorUserDTO);
+public interface AdministratorUserMapper extends BaseMapper<AdministratorUserEntity, AdministratorUserDTO>{
 
 }

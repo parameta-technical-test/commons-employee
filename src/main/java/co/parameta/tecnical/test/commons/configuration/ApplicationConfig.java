@@ -46,7 +46,7 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailService() {
         return username -> administratorUserRepository.findByEmail(username)
-                .map(administratorUserMapper::entityToDto)
+                .map(administratorUserMapper::toDto)
                 .map(administratorUserDTO -> new AdministratorUserSeguridadDTO(administratorUserDTO, List.of()))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
