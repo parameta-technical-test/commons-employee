@@ -11,4 +11,7 @@ public interface AdministratorUserRepository extends JpaRepository<Administrator
 
     Optional<AdministratorUserEntity> findByCode(String code);
 
+    Optional<AdministratorUserEntity> findByEmail(String code);
+
+
 }
