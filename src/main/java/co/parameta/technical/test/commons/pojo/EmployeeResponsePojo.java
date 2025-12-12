@@ -7,22 +7,20 @@
 
 package co.parameta.technical.test.commons.pojo;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
- * <p>Clase Java para AdministratorUser complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
- * <complexType name="AdministratorUser">
+ * <complexType>
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="response" type="{http://parameta.co/technical/test/employee}EmployeeResponseType"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -32,35 +30,37 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdministratorUser", propOrder = {
-    "code"
+@XmlType(name = "", propOrder = {
+    "response"
 })
-public class AdministratorUserPojo {
+@XmlRootElement(name = "EmployeeResponse")
+public class EmployeeResponsePojo {
 
-    protected String code;
+    @XmlElement(required = true)
+    protected EmployeeResponseTypePojo response;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Obtiene el valor de la propiedad response.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link EmployeeResponseTypePojo }
      *     
      */
-    public String getCode() {
-        return code;
+    public EmployeeResponseTypePojo getResponse() {
+        return response;
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Define el valor de la propiedad response.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link EmployeeResponseTypePojo }
      *     
      */
-    public void setCode(String value) {
-        this.code = value;
+    public void setResponse(EmployeeResponseTypePojo value) {
+        this.response = value;
     }
 
 }

@@ -7,22 +7,20 @@
 
 package co.parameta.technical.test.commons.pojo;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 
 
 /**
- * <p>Clase Java para AdministratorUser complex type.
+ * <p>Clase Java para anonymous complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>{@code
- * <complexType name="AdministratorUser">
+ * <complexType>
  *   <complexContent>
  *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       <sequence>
- *         <element name="code" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         <element name="employee" type="{http://parameta.co/technical/test/employee}Employee"/>
  *       </sequence>
  *     </restriction>
  *   </complexContent>
@@ -32,35 +30,37 @@ import jakarta.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AdministratorUser", propOrder = {
-    "code"
+@XmlType(name = "", propOrder = {
+    "employee"
 })
-public class AdministratorUserPojo {
+@XmlRootElement(name = "SaveEmployeeRequest")
+public class SaveEmployeeRequestPojo {
 
-    protected String code;
+    @XmlElement(required = true)
+    protected EmployeePojo employee;
 
     /**
-     * Obtiene el valor de la propiedad code.
+     * Obtiene el valor de la propiedad employee.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link EmployeePojo }
      *     
      */
-    public String getCode() {
-        return code;
+    public EmployeePojo getEmployee() {
+        return employee;
     }
 
     /**
-     * Define el valor de la propiedad code.
+     * Define el valor de la propiedad employee.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link EmployeePojo }
      *     
      */
-    public void setCode(String value) {
-        this.code = value;
+    public void setEmployee(EmployeePojo value) {
+        this.employee = value;
     }
 
 }
