@@ -17,8 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 public class ScriptValidationEntity {
 
+    @Id
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
     @Column(name = "code")
     private String code;
