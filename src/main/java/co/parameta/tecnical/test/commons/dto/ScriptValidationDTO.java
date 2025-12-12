@@ -17,7 +17,7 @@ public class ScriptValidationDTO {
 
     private String code;
 
-    private String groovie_code;
+    private String groovieCode;
 
     private Date dateCreate;
 

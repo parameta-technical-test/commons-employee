@@ -22,7 +22,7 @@ public class ScriptValidationEntity {
     private String code;
 
     @Column(name = "description", nullable = false)
-    private String groovie_code;
+    private String groovieCode;
 
     @Column(name = "date_create", nullable = false)
     private Date dateCreate;
