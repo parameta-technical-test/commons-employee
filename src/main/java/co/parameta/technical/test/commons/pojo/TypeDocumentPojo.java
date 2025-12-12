@@ -10,6 +10,7 @@ package co.parameta.technical.test.commons.pojo;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
+import lombok.Data;
 
 
 /**
@@ -37,57 +38,10 @@ import jakarta.xml.bind.annotation.XmlType;
     "code",
     "description"
 })
+@Data
 public class TypeDocumentPojo {
 
     protected String code;
     protected String description;
-
-    /**
-     * Obtiene el valor de la propiedad code.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Define el valor de la propiedad code.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad description.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Define el valor de la propiedad description.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDescription(String value) {
-        this.description = value;
-    }
 
 }

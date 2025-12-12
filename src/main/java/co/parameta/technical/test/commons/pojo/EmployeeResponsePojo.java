@@ -8,6 +8,7 @@
 package co.parameta.technical.test.commons.pojo;
 
 import jakarta.xml.bind.annotation.*;
+import lombok.Data;
 
 
 /**
@@ -34,33 +35,11 @@ import jakarta.xml.bind.annotation.*;
     "response"
 })
 @XmlRootElement(name = "EmployeeResponse")
+@Data
 public class EmployeeResponsePojo {
 
     @XmlElement(required = true)
     protected EmployeeResponseTypePojo response;
 
-    /**
-     * Obtiene el valor de la propiedad response.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EmployeeResponseTypePojo }
-     *     
-     */
-    public EmployeeResponseTypePojo getResponse() {
-        return response;
-    }
-
-    /**
-     * Define el valor de la propiedad response.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EmployeeResponseTypePojo }
-     *     
-     */
-    public void setResponse(EmployeeResponseTypePojo value) {
-        this.response = value;
-    }
 
 }

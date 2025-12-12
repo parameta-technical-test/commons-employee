@@ -10,6 +10,7 @@ package co.parameta.technical.test.commons.pojo;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlType;
+import lombok.Data;
 
 
 /**
@@ -35,32 +36,9 @@ import jakarta.xml.bind.annotation.XmlType;
 @XmlType(name = "AdministratorUser", propOrder = {
     "code"
 })
+@Data
 public class AdministratorUserPojo {
 
     protected String code;
-
-    /**
-     * Obtiene el valor de la propiedad code.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCode() {
-        return code;
-    }
-
-    /**
-     * Define el valor de la propiedad code.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCode(String value) {
-        this.code = value;
-    }
 
 }

@@ -11,6 +11,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlSchemaType;
 import jakarta.xml.bind.annotation.XmlType;
+import lombok.Data;
 
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.math.BigDecimal;
@@ -47,20 +48,20 @@ import java.math.BigDecimal;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Employee", propOrder = {
-    "id",
-    "names",
-    "lastNames",
-    "typeDocument",
-    "documentNumber",
-    "dateOfBirth",
-    "dateAffiliationCompany",
-    "position",
-    "salary",
-    "administratorUser",
-    "dateCreate",
-    "dateUpdate"
-})
+@XmlType(
+        name = "Employee",
+        propOrder = {
+                "id","names","lastNames",
+                "typeDocumentPojo",
+                "documentNumber",
+                "dateOfBirth","dateAffiliationCompany",
+                "positionPojo",
+                "salary",
+                "administratorUserPojo",
+                "dateCreate","dateUpdate"
+        }
+)
+@Data
 public class EmployeePojo {
 
     protected Integer id;
@@ -79,293 +80,5 @@ public class EmployeePojo {
     protected XMLGregorianCalendar dateCreate;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateUpdate;
-
-    /**
-     * Obtiene el valor de la propiedad id.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * Define el valor de la propiedad id.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setId(Integer value) {
-        this.id = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad names.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNames() {
-        return names;
-    }
-
-    /**
-     * Define el valor de la propiedad names.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNames(String value) {
-        this.names = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad lastNames.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLastNames() {
-        return lastNames;
-    }
-
-    /**
-     * Define el valor de la propiedad lastNames.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLastNames(String value) {
-        this.lastNames = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad typeDocument.
-     * 
-     * @return
-     *     possible object is
-     *     {@link TypeDocumentPojo }
-     *     
-     */
-    public TypeDocumentPojo getTypeDocument() {
-        return typeDocumentPojo;
-    }
-
-    /**
-     * Define el valor de la propiedad typeDocument.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link TypeDocumentPojo }
-     *     
-     */
-    public void setTypeDocument(TypeDocumentPojo value) {
-        this.typeDocumentPojo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad documentNumber.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getDocumentNumber() {
-        return documentNumber;
-    }
-
-    /**
-     * Define el valor de la propiedad documentNumber.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setDocumentNumber(String value) {
-        this.documentNumber = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad dateOfBirth.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    /**
-     * Define el valor de la propiedad dateOfBirth.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateOfBirth(XMLGregorianCalendar value) {
-        this.dateOfBirth = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad dateAffiliationCompany.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateAffiliationCompany() {
-        return dateAffiliationCompany;
-    }
-
-    /**
-     * Define el valor de la propiedad dateAffiliationCompany.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateAffiliationCompany(XMLGregorianCalendar value) {
-        this.dateAffiliationCompany = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad position.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PositionPojo }
-     *     
-     */
-    public PositionPojo getPosition() {
-        return positionPojo;
-    }
-
-    /**
-     * Define el valor de la propiedad position.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PositionPojo }
-     *     
-     */
-    public void setPosition(PositionPojo value) {
-        this.positionPojo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad salary.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getSalary() {
-        return salary;
-    }
-
-    /**
-     * Define el valor de la propiedad salary.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setSalary(BigDecimal value) {
-        this.salary = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad administratorUser.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AdministratorUserPojo }
-     *     
-     */
-    public AdministratorUserPojo getAdministratorUser() {
-        return administratorUserPojo;
-    }
-
-    /**
-     * Define el valor de la propiedad administratorUser.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AdministratorUserPojo }
-     *     
-     */
-    public void setAdministratorUser(AdministratorUserPojo value) {
-        this.administratorUserPojo = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad dateCreate.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateCreate() {
-        return dateCreate;
-    }
-
-    /**
-     * Define el valor de la propiedad dateCreate.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateCreate(XMLGregorianCalendar value) {
-        this.dateCreate = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad dateUpdate.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDateUpdate() {
-        return dateUpdate;
-    }
-
-    /**
-     * Define el valor de la propiedad dateUpdate.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDateUpdate(XMLGregorianCalendar value) {
-        this.dateUpdate = value;
-    }
 
 }

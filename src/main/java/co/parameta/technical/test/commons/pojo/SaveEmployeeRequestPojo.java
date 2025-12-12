@@ -8,6 +8,7 @@
 package co.parameta.technical.test.commons.pojo;
 
 import jakarta.xml.bind.annotation.*;
+import lombok.Data;
 
 
 /**
@@ -34,33 +35,11 @@ import jakarta.xml.bind.annotation.*;
     "employee"
 })
 @XmlRootElement(name = "SaveEmployeeRequest")
+@Data
 public class SaveEmployeeRequestPojo {
 
     @XmlElement(required = true)
     protected EmployeePojo employee;
 
-    /**
-     * Obtiene el valor de la propiedad employee.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EmployeePojo }
-     *     
-     */
-    public EmployeePojo getEmployee() {
-        return employee;
-    }
-
-    /**
-     * Define el valor de la propiedad employee.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EmployeePojo }
-     *     
-     */
-    public void setEmployee(EmployeePojo value) {
-        this.employee = value;
-    }
 
 }

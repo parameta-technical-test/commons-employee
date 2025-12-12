@@ -11,6 +11,7 @@ import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlType;
+import lombok.Data;
 
 
 /**
@@ -40,6 +41,7 @@ import jakarta.xml.bind.annotation.XmlType;
     "message",
     "employee"
 })
+@Data
 public class EmployeeResponseTypePojo {
 
     @XmlElement(required = true)
@@ -47,76 +49,5 @@ public class EmployeeResponseTypePojo {
     protected String message;
     protected EmployeePojo employee;
 
-    /**
-     * Obtiene el valor de la propiedad status.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getStatus() {
-        return status;
-    }
-
-    /**
-     * Define el valor de la propiedad status.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setStatus(String value) {
-        this.status = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad message.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getMessage() {
-        return message;
-    }
-
-    /**
-     * Define el valor de la propiedad message.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setMessage(String value) {
-        this.message = value;
-    }
-
-    /**
-     * Obtiene el valor de la propiedad employee.
-     * 
-     * @return
-     *     possible object is
-     *     {@link EmployeePojo }
-     *     
-     */
-    public EmployeePojo getEmployee() {
-        return employee;
-    }
-
-    /**
-     * Define el valor de la propiedad employee.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link EmployeePojo }
-     *     
-     */
-    public void setEmployee(EmployeePojo value) {
-        this.employee = value;
-    }
 
 }
