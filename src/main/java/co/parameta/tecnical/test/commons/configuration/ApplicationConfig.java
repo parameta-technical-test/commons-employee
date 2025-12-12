@@ -17,6 +17,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 @Configuration
 @RequiredArgsConstructor
 public class ApplicationConfig {
@@ -45,7 +47,7 @@ public class ApplicationConfig {
     public UserDetailsService userDetailService() {
         return username -> administratorUserRepository.findByEmail(username)
                 .map(administratorUserMapper::entityToDto)
-                .map(administratorUserDTO -> new AdministratorUserSeguridadDTO(administratorUserDTO, null))
+                .map(administratorUserDTO -> new AdministratorUserSeguridadDTO(administratorUserDTO, List.of()))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
