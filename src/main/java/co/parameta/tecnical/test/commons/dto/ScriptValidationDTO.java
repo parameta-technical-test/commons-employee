@@ -23,5 +23,7 @@ public class ScriptValidationDTO {
 
     private Date dateUpdate;
 
+    private int state;
+
 }
 

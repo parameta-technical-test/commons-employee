@@ -30,4 +30,7 @@ public class ScriptValidationEntity {
     @Column(name = "date_update", nullable = false)
     private Date dateUpdate;
 
+    @Column(name = "state")
+    private int state;
+
 }
