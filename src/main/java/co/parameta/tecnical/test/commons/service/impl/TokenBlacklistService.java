@@ -1,5 +1,6 @@
 package co.parameta.tecnical.test.commons.service.impl;
 
+import co.parameta.tecnical.test.commons.dto.AdministratorUserDTO;
 import co.parameta.tecnical.test.commons.dto.BlacklistTokenDTO;
 import co.parameta.tecnical.test.commons.dto.RespuestaGeneralDTO;
 import co.parameta.tecnical.test.commons.repository.BlacklistTokenRepository;
@@ -38,7 +39,9 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         }
         BlacklistTokenDTO blacklistTokenDTO = new BlacklistTokenDTO();
         blacklistTokenDTO.setToken(token);
-        blacklistTokenDTO.setCodeAdministratorUser(iJwtService.getCodeFromToken(token));
+        AdministratorUserDTO administratorUser = new AdministratorUserDTO();
+        administratorUser.setCode(iJwtService.getCodeFromToken(token));
+        blacklistTokenDTO.setAdministratorUser(administratorUser);
         blacklistTokenRepository.save(blacklistTokenMapper.dtoToEntity(blacklistTokenDTO));
 
         return respuesta;

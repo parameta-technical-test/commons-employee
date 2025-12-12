@@ -1,5 +1,6 @@
 package co.parameta.tecnical.test.commons.dto;
 
+import co.parameta.tecnical.test.commons.entity.AdministratorUserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +15,6 @@ import java.util.Date;
 public class BlacklistTokenDTO {
 
     private String token;
-    private String codeAdministratorUser;
+    private AdministratorUserDTO administratorUser;
     private Date dateCreate;
 }
