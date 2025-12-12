@@ -1,6 +1,7 @@
 package co.parameta.tecnical.test.commons.service.impl;
 
 import co.parameta.tecnical.test.commons.dto.AdministratorUserDTO;
+import co.parameta.tecnical.test.commons.repository.BlacklistTokenRepository;
 import co.parameta.tecnical.test.commons.service.IJwtService;
 import co.parameta.tecnical.test.commons.service.ITokenBlacklistService;
 import co.parameta.tecnical.test.commons.util.enums.TokenStatusEnum;
@@ -12,6 +13,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -34,7 +36,7 @@ public class JwtService implements IJwtService {
     @Value("${jwt.secret}")
     private String secretKey;
 
-    private final ITokenBlacklistService iTokenBlacklistService;
+    private final BlacklistTokenRepository blacklistTokenRepository;
 
 
     @Override
@@ -116,7 +118,7 @@ public class JwtService implements IJwtService {
             return TokenStatusEnum.INVALID;
         }
         token =  token.substring(7).trim().replaceAll("\\s+", "");
-        if(iTokenBlacklistService.isTokenRevoked(token)){
+        if(blacklistTokenRepository.existsByToken(token)){
             return TokenStatusEnum.INVALID;
         }
         try {

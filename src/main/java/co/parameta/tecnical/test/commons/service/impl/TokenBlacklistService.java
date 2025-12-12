@@ -45,11 +45,6 @@ public class TokenBlacklistService implements ITokenBlacklistService {
     }
 
     @Override
-    public boolean isTokenRevoked(String token) {
-        return blacklistTokenRepository.existsByToken(token);
-    }
-
-    @Override
     public void cleanExpired(long expirationThresholdMillis) {
         blacklistTokenRepository.deleteAll();
     }

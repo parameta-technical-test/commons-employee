@@ -1,5 +1,6 @@
 package co.parameta.tecnical.test.commons.util.helper;
 
+import co.parameta.tecnical.test.commons.repository.BlacklistTokenRepository;
 import co.parameta.tecnical.test.commons.service.IJwtService;
 import co.parameta.tecnical.test.commons.service.ITokenBlacklistService;
 import jakarta.servlet.FilterChain;
@@ -31,7 +32,7 @@ public class JWTAuthenticationFilter  extends OncePerRequestFilter {
 
     private final UserDetailsService userDetailsService;
 
-    private final ITokenBlacklistService iTokenBlacklistService;
+    private final BlacklistTokenRepository blacklistTokenRepository;
 
     private static final List<String> PUBLIC_URIS = List.of(
             "/user/**"
@@ -56,7 +57,7 @@ public class JWTAuthenticationFilter  extends OncePerRequestFilter {
         username = jwtService.getUsernameFromToken(token);
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (jwtService.isTokenValid(token, userDetails) && !iTokenBlacklistService.isTokenRevoked(token)) {
+            if (jwtService.isTokenValid(token, userDetails) && !blacklistTokenRepository.existsByToken(token)) {
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
