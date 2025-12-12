@@ -1,5 +1,7 @@
 package co.parameta.technical.test.commons.dto;
 
+import co.parameta.technical.test.commons.entity.AdministratorUserEntity;
+import co.parameta.technical.test.commons.entity.TypeDocumentEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +19,7 @@ public class EmployeeDTO {
     private String names;
     private String lastNames;
 
-    private String codeTypeDocument;
+    private TypeDocumentDTO typeDocument;
     private String documentNumber;
 
     private Date dateOfBirth;
@@ -26,7 +28,7 @@ public class EmployeeDTO {
     private String codePosition;
     private BigDecimal salary;
 
-    private String codeAdministratorUser;
+    private AdministratorUserDTO administratorUser;
 
     private Date dateCreate;
     private Date dateUpdate;
