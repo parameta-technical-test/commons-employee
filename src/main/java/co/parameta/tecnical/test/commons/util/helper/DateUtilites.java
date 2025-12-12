@@ -9,7 +9,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class FechaUtilidad {
+public class DateUtilites {
 
     public static Date sumarMesesAFecha(final Date date, final int meses) {
         Calendar cal = Calendar.getInstance();
@@ -24,7 +24,7 @@ public class FechaUtilidad {
         try {
             date = formatter.parse(fecha);
         } catch (ParseException var4) {
-            Logger.getLogger(FechaUtilidad.class.getName()).log(Level.INFO, "Error casting date");
+            Logger.getLogger(DateUtilites.class.getName()).log(Level.INFO, "Error casting date");
         }
 
         return date;

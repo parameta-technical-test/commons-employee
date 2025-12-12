@@ -2,7 +2,7 @@ package co.parameta.tecnical.test.commons.service.impl;
 
 import co.parameta.tecnical.test.commons.dto.AdministratorUserDTO;
 import co.parameta.tecnical.test.commons.dto.BlacklistTokenDTO;
-import co.parameta.tecnical.test.commons.dto.RespuestaGeneralDTO;
+import co.parameta.tecnical.test.commons.dto.ResponseGeneralDTO;
 import co.parameta.tecnical.test.commons.repository.BlacklistTokenRepository;
 import co.parameta.tecnical.test.commons.service.IJwtService;
 import co.parameta.tecnical.test.commons.service.ITokenBlacklistService;
@@ -24,8 +24,8 @@ public class TokenBlacklistService implements ITokenBlacklistService {
 
 
     @Override
-    public RespuestaGeneralDTO revokeToken(String token) {
-        RespuestaGeneralDTO respuesta = new RespuestaGeneralDTO();
+    public ResponseGeneralDTO revokeToken(String token) {
+        ResponseGeneralDTO respuesta = new ResponseGeneralDTO();
         if (!StringUtils.hasText(token)) {
             throw new RuntimeException("Null or empty token");
         }

@@ -10,13 +10,13 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class AdministratorUserSeguridadDTO extends AdministratorUserDTO implements UserDetails {
+public class AdministratorUserSecurityDTO extends AdministratorUserDTO implements UserDetails {
 
     private String password;
 
     private Collection<? extends GrantedAuthority> authorities = List.of();
 
-    public AdministratorUserSeguridadDTO(AdministratorUserDTO usuarioDTO, Collection<? extends GrantedAuthority> authorities) {
+    public AdministratorUserSecurityDTO(AdministratorUserDTO usuarioDTO, Collection<? extends GrantedAuthority> authorities) {
         super(usuarioDTO.getCode(),
                 usuarioDTO.getEmail(),
                 usuarioDTO.getPasswordEncoder()

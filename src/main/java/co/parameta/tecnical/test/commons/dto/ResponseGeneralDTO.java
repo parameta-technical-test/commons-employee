@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RespuestaGeneralDTO implements Serializable {
+public class ResponseGeneralDTO implements Serializable {
 
     private Integer status;
 

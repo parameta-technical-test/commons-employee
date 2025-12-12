@@ -1,7 +1,6 @@
 package co.parameta.tecnical.test.commons.util.helper;
 
 import java.math.BigDecimal;
-import java.security.SecureRandom;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -9,8 +8,8 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static co.parameta.tecnical.test.commons.util.constantes.Constantes.CONVERTERS;
-import static co.parameta.tecnical.test.commons.util.constantes.Constantes.DATE_PATTERNS;
+import static co.parameta.tecnical.test.commons.util.constantes.Constants.CONVERTERS;
+import static co.parameta.tecnical.test.commons.util.constantes.Constants.DATE_PATTERNS;
 
 public class GeneralUtil {
 

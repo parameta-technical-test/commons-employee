@@ -1,13 +1,11 @@
 package co.parameta.tecnical.test.commons.configuration;
 
-import co.parameta.tecnical.test.commons.dto.AdministratorUserDTO;
-import co.parameta.tecnical.test.commons.dto.AdministratorUserSeguridadDTO;
+import co.parameta.tecnical.test.commons.dto.AdministratorUserSecurityDTO;
 import co.parameta.tecnical.test.commons.repository.AdministratorUserRepository;
 import co.parameta.tecnical.test.commons.util.mapper.AdministratorUserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -47,7 +45,7 @@ public class ApplicationConfig {
     public UserDetailsService userDetailService() {
         return username -> administratorUserRepository.findByEmail(username)
                 .map(administratorUserMapper::toDto)
-                .map(administratorUserDTO -> new AdministratorUserSeguridadDTO(administratorUserDTO, List.of()))
+                .map(administratorUserDTO -> new AdministratorUserSecurityDTO(administratorUserDTO, List.of()))
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 

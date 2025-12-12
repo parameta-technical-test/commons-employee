@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public class Constantes {
+public class Constants {
 
-    private Constantes() {
+    private Constants() {
     }
 
     public static final Map<Class<?>, Function<Object, ?>> CONVERTERS = new HashMap<>();
