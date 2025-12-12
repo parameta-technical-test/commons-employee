@@ -55,9 +55,15 @@
 		<org.mapstruct.version>1.6.0</org.mapstruct.version>
 		<lombok.version>1.18.32</lombok.version>
 		<jackson.version>2.18.0-rc1</jackson.version>
+		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
