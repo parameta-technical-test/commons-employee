@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static co.parameta.tecnical.test.commons.util.constantes.Constantes.CONVERTERS;
 import static co.parameta.tecnical.test.commons.util.constantes.Constantes.DATE_PATTERNS;
@@ -140,5 +141,13 @@ public class GeneralUtil {
         }
     }
 
+    public static <T> T get(Supplier<T> supplier, T defaultValue) {
+        try {
+            T value = supplier.get();
+            return value != null ? value : defaultValue;
+        } catch (NullPointerException e) {
+            return defaultValue;
+        }
+    }
 
 }
