@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.5</version>
+		<version>4.0.0</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.project</groupId>
 	<artifactId>test.parameta.commons</artifactId>
-	<version>0.0.21</version>
+	<version>0.0.22</version>
 	<name>commons</name>
 	<description>Librería para la prueba técnica</description>
 	<distributionManagement>
