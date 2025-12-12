@@ -3,6 +3,7 @@ package co.parameta.tecnical.test.commons.service.impl;
 import co.parameta.tecnical.test.commons.dto.BlacklistTokenDTO;
 import co.parameta.tecnical.test.commons.dto.RespuestaGeneralDTO;
 import co.parameta.tecnical.test.commons.repository.BlacklistTokenRepository;
+import co.parameta.tecnical.test.commons.service.IJwtService;
 import co.parameta.tecnical.test.commons.service.ITokenBlacklistService;
 import co.parameta.tecnical.test.commons.util.mapper.BlacklistTokenMapper;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,8 @@ public class TokenBlacklistService implements ITokenBlacklistService {
 
     private final BlacklistTokenMapper blacklistTokenMapper;
 
+    private final IJwtService iJwtService;
+
     @Override
     public RespuestaGeneralDTO revokeToken(String token) {
         RespuestaGeneralDTO respuesta = new RespuestaGeneralDTO();
@@ -40,7 +43,7 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         }
         BlacklistTokenDTO blacklistTokenDTO = new BlacklistTokenDTO();
         blacklistTokenDTO.setToken(token);
-
+        blacklistTokenDTO.setCodeAdministratorUser(iJwtService.getCodigoFromToken(token));
         blacklistTokenRepository.save(blacklistTokenMapper.dtoToEntity(blacklistTokenDTO));
 
         return respuesta;
