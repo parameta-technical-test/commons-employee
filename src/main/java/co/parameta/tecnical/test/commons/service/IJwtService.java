@@ -10,10 +10,10 @@ public interface IJwtService {
 
     boolean isTokenValid(String token, UserDetails userDetails);
 
-    long getTiempoRestanteMillis(String token);
+    long getTimeRemainingMillis(String token);
 
-    String getCodigoFromToken(String token);
+    String getCodeFromToken(String token);
 
-    String obtenerTokenDelHeader();
+    String getTokenFromHeader();
 
 }

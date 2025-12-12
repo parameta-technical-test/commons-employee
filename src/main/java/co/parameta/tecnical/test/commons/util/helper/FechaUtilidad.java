@@ -24,7 +24,7 @@ public class FechaUtilidad {
         try {
             date = formatter.parse(fecha);
         } catch (ParseException var4) {
-            Logger.getLogger(FechaUtilidad.class.getName()).log(Level.INFO, "Error al castear la fecha");
+            Logger.getLogger(FechaUtilidad.class.getName()).log(Level.INFO, "Error casting date");
         }
 
         return date;
@@ -53,7 +53,7 @@ public class FechaUtilidad {
 
     public static String formatDateToYMD(Date date) {
         if (date == null) return null;
-        if (date.getTime() < 0) return "Fecha inválida";
+        if (date.getTime() < 0) return "Invalid date";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         sdf.setTimeZone(TimeZone.getDefault());
         return sdf.format(date);

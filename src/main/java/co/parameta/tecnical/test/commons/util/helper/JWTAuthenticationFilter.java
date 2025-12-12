@@ -34,7 +34,7 @@ public class JWTAuthenticationFilter  extends OncePerRequestFilter {
     private final ITokenBlacklistService iTokenBlacklistService;
 
     private static final List<String> PUBLIC_URIS = List.of(
-            "/usuario/**"
+            "/user/**"
     );
 
     @Override

@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
         body.put("error", "Internal Server Error");
         body.put("message",ex.getMessage());
         body.put("path", request.getDescription(false));
-        log.error("{}: {}", "Hubo un error en el servidor ", ex.getMessage(), ex);
+        log.error("{}: {}", "There was an error on the server ", ex.getMessage(), ex);
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -43,9 +43,9 @@ public class GlobalExceptionHandler {
         body.put("timestamp", new Date());
         body.put("status", HttpStatus.UNAUTHORIZED.value());
         body.put("error", "Unauthorized");
-        body.put("message", "Usuario o contraseña incorrectos.");
+        body.put("message", "Incorrect username or password");
         body.put("path", request.getDescription(false));
-        log.error("Error de autenticación: {}", ex.getMessage(), ex);
+        log.error("Authentication error: {}", ex.getMessage(), ex);
         return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
     }
 
@@ -55,9 +55,9 @@ public class GlobalExceptionHandler {
         body.put("timestamp", new Date());
         body.put("status", HttpStatus.NOT_FOUND.value());
         body.put("error", "Not Found");
-        body.put("message", "Lo sentimos, ha ocurrido un error interno. Por favor, inténtalo de nuevo más tarde.");
+        body.put("message", "We apologize, an internal error has occurred. Please try again later.");
         body.put("path", request.getDescription(false));
-        log.error("{}: {}", "Hubo un error en encontrar el endpoint ", ex.getMessage(), ex);
+        log.error("{}: {}", "There was an error finding the endpoint ", ex.getMessage(), ex);
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }
 
@@ -67,9 +67,9 @@ public class GlobalExceptionHandler {
         body.put("timestamp", new Date());
         body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         body.put("error", "Internal Server Error");
-        body.put("message", "Lo sentimos, ha ocurrido un error interno. Por favor, inténtalo de nuevo más tarde.");
+        body.put("message", "We apologize, an internal error has occurred. Please try again later.");
         body.put("path", request.getDescription(false));
-        log.error("{}: {}", "Hubo un error en el servidor ", ex.getMessage(), ex);
+        log.error("{}: {}", "There was an error on the server ", ex.getMessage(), ex);
         return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

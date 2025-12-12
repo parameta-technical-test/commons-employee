@@ -10,16 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.io.IOException;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
 public class TokenBlacklistService implements ITokenBlacklistService {
-
-    private final Set<String> revokedTokens = Collections.synchronizedSet(new HashSet<>());
 
     private final BlacklistTokenRepository blacklistTokenRepository;
 
@@ -27,11 +21,12 @@ public class TokenBlacklistService implements ITokenBlacklistService {
 
     private final IJwtService iJwtService;
 
+
     @Override
     public RespuestaGeneralDTO revokeToken(String token) {
         RespuestaGeneralDTO respuesta = new RespuestaGeneralDTO();
         if (!StringUtils.hasText(token)) {
-            throw new RuntimeException("Token null o vacío");
+            throw new RuntimeException("Null or empty token");
         }
         token = token.trim();
         if (token.toLowerCase().startsWith("bearer ")) {
@@ -39,11 +34,11 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         }
 
         if (!StringUtils.hasText(token)) {
-            throw new RuntimeException("Token mal formateado tras quitar 'Bearer '");
+            throw new RuntimeException("Token malformatted after removal 'Bearer '");
         }
         BlacklistTokenDTO blacklistTokenDTO = new BlacklistTokenDTO();
         blacklistTokenDTO.setToken(token);
-        blacklistTokenDTO.setCodeAdministratorUser(iJwtService.getCodigoFromToken(token));
+        blacklistTokenDTO.setCodeAdministratorUser(iJwtService.getCodeFromToken(token));
         blacklistTokenRepository.save(blacklistTokenMapper.dtoToEntity(blacklistTokenDTO));
 
         return respuesta;
@@ -51,12 +46,11 @@ public class TokenBlacklistService implements ITokenBlacklistService {
 
     @Override
     public boolean isTokenRevoked(String token) {
-        return revokedTokens.contains(token);
+        return blacklistTokenRepository.existsByToken(token);
     }
 
     @Override
     public void cleanExpired(long expirationThresholdMillis) {
-        revokedTokens.clear();
         blacklistTokenRepository.deleteAll();
     }
 }

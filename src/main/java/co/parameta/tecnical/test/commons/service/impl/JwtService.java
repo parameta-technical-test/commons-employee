@@ -19,6 +19,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.crypto.SecretKey;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +43,7 @@ public class JwtService implements IJwtService {
         long expirationTimeInMillis = 24 * 60 * 60 * 1000;
         if (userDetails instanceof AdministratorUserDTO administratorUser) {
             additionalClaims.put("sub", administratorUser.getEmail());
-            additionalClaims.put("codigo", administratorUser.getCode());
+            additionalClaims.put("code", administratorUser.getCode());
         }
         return buildToken(additionalClaims, userDetails, expirationTimeInMillis);
     }
@@ -60,7 +61,7 @@ public class JwtService implements IJwtService {
     }
 
     @Override
-    public long getTiempoRestanteMillis(String token) {
+    public long getTimeRemainingMillis(String token) {
         Date expiration = getExpiration(token);
         return expiration != null
                 ? expiration.getTime()
@@ -68,12 +69,12 @@ public class JwtService implements IJwtService {
     }
 
     @Override
-    public String getCodigoFromToken(String token) {
-        return getClaims(token, claims -> claims.get("codigo", String.class));
+    public String getCodeFromToken(String token) {
+        return getClaims(token, claims -> claims.get("code", String.class));
     }
 
     @Override
-    public String obtenerTokenDelHeader() {
+    public String getTokenFromHeader() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         if (attr == null) {
             return null;
@@ -133,13 +134,19 @@ public class JwtService implements IJwtService {
 
     private String buildToken(Map<String, Object> extraClaims, UserDetails user, long expirationTimeInMillis) {
         SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64URL.decode(secretKey));
+
+        Instant now = Instant.now();
+        Instant expiration = now.plusMillis(expirationTimeInMillis);
+
         return Jwts.builder()
-                .setClaims(extraClaims)
-                .setSubject(user.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + expirationTimeInMillis))
-                .signWith(key, SignatureAlgorithm.HS512)
+                .claims(extraClaims)
+                .subject(user.getUsername())
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(expiration))
+                .signWith(key, Jwts.SIG.HS512)
                 .compact();
     }
+
+
 
 }
