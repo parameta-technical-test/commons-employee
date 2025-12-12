@@ -24,7 +24,7 @@ public class ScriptValidationEntity {
     @Column(name = "code")
     private String code;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "groovie_code", nullable = false)
     private String groovieCode;
 
     @Column(name = "date_create", nullable = false)

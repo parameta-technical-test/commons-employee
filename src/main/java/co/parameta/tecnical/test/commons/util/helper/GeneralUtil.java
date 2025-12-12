@@ -17,8 +17,6 @@ public class GeneralUtil {
     private GeneralUtil() {}
 
 
-
-
     static {
         CONVERTERS.put(Long.class,    GeneralUtil::toLong);
         CONVERTERS.put(Integer.class, GeneralUtil::toInteger);
