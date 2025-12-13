@@ -56,4 +56,7 @@ public class EmployeeEntity {
     @Column(name = "date_update")
     private Date dateUpdate;
 
+    @Column(name = "storage_location_report")
+    private String storageLocationReport;
+
 }
