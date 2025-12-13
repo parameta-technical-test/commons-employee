@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-public class Constants {
+public final class Constants {
 
     private Constants() {
     }
@@ -22,5 +22,8 @@ public class Constants {
             "yyyyMMddHHmmss",
             "yyyyMMdd"
     );
+
+    public static final String NS = "http://parameta.co/technical/test/employee";
+
 
 }

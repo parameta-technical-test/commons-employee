@@ -1,14 +1,13 @@
 package co.parameta.technical.test.commons.pojo;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import lombok.Data;
+
+import static co.parameta.technical.test.commons.util.constantes.Constants.NS;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
-        name = "AdditionalEmployeeInformationPojo",
+        name = "AdditionalEmployeeInformation",
         propOrder = {
                 "timeLinkedToCompany",
                 "currentAgeEmployee"
@@ -17,9 +16,10 @@ import lombok.Data;
 @Data
 public class AdditionalEmployeeInformationPojo {
 
-    @XmlElement(name = "timeLinkedToCompany")
+
+    @XmlElement(name = "timeLinkedToCompany", namespace = NS)
     protected ExtraInformationPojo timeLinkedToCompany;
 
-    @XmlElement(name = "currentAgeEmployee")
+    @XmlElement(name = "currentAgeEmployee", namespace = NS)
     protected ExtraInformationPojo currentAgeEmployee;
 }

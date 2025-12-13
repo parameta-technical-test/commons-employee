@@ -1,45 +1,28 @@
-//
-// Este archivo ha sido generado por Eclipse Implementation of JAXB v4.0.2 
-// Visite https://eclipse-ee4j.github.io/jaxb-ri 
-// Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
-//
-
-
 package co.parameta.technical.test.commons.pojo;
 
 import jakarta.xml.bind.annotation.*;
 import lombok.Data;
 
+import static co.parameta.technical.test.commons.util.constantes.Constants.NS;
 
-/**
- * <p>Clase Java para anonymous complex type.
- * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
- * 
- * <pre>{@code
- * <complexType>
- *   <complexContent>
- *     <restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       <sequence>
- *         <element name="employee" type="{http://parameta.co/technical/test/employee}Employee"/>
- *       </sequence>
- *     </restriction>
- *   </complexContent>
- * </complexType>
- * }</pre>
- * 
- * 
- */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "employee"
-})
-@XmlRootElement(name = "SaveEmployeeRequest", namespace = "http://parameta.co/technical/test/employee")
+@XmlType(
+        name = "",
+        propOrder = {
+                "employee"
+        }
+)
+@XmlRootElement(
+        name = "SaveEmployeeRequest",
+        namespace = NS
+)
 @Data
 public class SaveEmployeeRequestPojo {
 
-    @XmlElement(name="employee", namespace="http://parameta.co/technical/test/employee", required=true)
+    @XmlElement(
+            name = "employee",
+            namespace = NS,
+            required = true
+    )
     protected EmployeePojo employee;
-
-
 }
