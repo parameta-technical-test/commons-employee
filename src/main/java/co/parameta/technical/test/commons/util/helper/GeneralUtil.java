@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 import static co.parameta.technical.test.commons.util.constantes.Constants.CONVERTERS;
 import static co.parameta.technical.test.commons.util.constantes.Constants.DATE_PATTERNS;
 
-public class GeneralUtil {
+public final class GeneralUtil {
 
     private GeneralUtil() {}
 

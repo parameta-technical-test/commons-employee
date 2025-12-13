@@ -9,7 +9,7 @@ import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DateUtilites {
+public final class DateUtilites {
 
     public static Date sumarMesesAFecha(final Date date, final int meses) {
         Calendar cal = Calendar.getInstance();
