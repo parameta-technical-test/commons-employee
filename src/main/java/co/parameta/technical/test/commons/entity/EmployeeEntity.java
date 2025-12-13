@@ -50,10 +50,10 @@ public class EmployeeEntity {
     @JoinColumn(name = "code_administrator_user", nullable = false)
     private AdministratorUserEntity administratorUser;
 
-    @Column(name = "date_create", nullable = false)
+    @Column(name = "date_create")
     private Date dateCreate;
 
-    @Column(name = "date_update", nullable = false)
+    @Column(name = "date_update")
     private Date dateUpdate;
 
 }
