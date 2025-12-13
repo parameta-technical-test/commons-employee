@@ -25,7 +25,7 @@ public class EmployeeDTO {
     private Date dateOfBirth;
     private Date dateAffiliationCompany;
 
-    private String codePosition;
+    private PositionDTO position;
     private BigDecimal salary;
 
     private AdministratorUserDTO administratorUser;
