@@ -52,12 +52,12 @@ import java.math.BigDecimal;
         name = "Employee",
         propOrder = {
                 "id","names","lastNames",
-                "typeDocumentPojo",
+                "typeDocument",
                 "documentNumber",
                 "dateOfBirth","dateAffiliationCompany",
-                "positionPojo",
+                "position",
                 "salary",
-                "administratorUserPojo",
+                "administratorUser",
                 "dateCreate","dateUpdate"
         }
 )
@@ -67,15 +67,15 @@ public class EmployeePojo {
     protected Integer id;
     protected String names;
     protected String lastNames;
-    protected TypeDocumentPojo typeDocumentPojo;
+    protected TypeDocumentPojo typeDocument;
     protected String documentNumber;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateOfBirth;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateAffiliationCompany;
-    protected PositionPojo positionPojo;
+    protected PositionPojo position;
     protected BigDecimal salary;
-    protected AdministratorUserPojo administratorUserPojo;
+    protected AdministratorUserPojo administratorUser;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateCreate;
     @XmlSchemaType(name = "dateTime")
