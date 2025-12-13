@@ -34,7 +34,7 @@ import lombok.Data;
 @XmlType(name = "", propOrder = {
     "employee"
 })
-@XmlRootElement(name = "SaveEmployeeRequest")
+@XmlRootElement(name = "SaveEmployeeRequest", namespace = "http://parameta.co/technical/test/employee")
 @Data
 public class SaveEmployeeRequestPojo {
 
