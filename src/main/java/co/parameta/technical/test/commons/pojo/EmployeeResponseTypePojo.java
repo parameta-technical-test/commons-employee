@@ -39,7 +39,7 @@ import lombok.Data;
 @XmlType(name = "EmployeeResponseType", propOrder = {
     "status",
     "message",
-    "employee"
+    "additionalEmployeeInformation"
 })
 @Data
 public class EmployeeResponseTypePojo {
@@ -47,7 +47,7 @@ public class EmployeeResponseTypePojo {
     @XmlElement(required = true)
     protected String status;
     protected String message;
-    protected EmployeePojo employee;
+    protected AdditionalEmployeeInformationPojo additionalEmployeeInformation;
 
 
 }
