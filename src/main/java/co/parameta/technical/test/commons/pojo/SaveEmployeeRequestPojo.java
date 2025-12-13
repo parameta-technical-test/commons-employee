@@ -38,7 +38,7 @@ import lombok.Data;
 @Data
 public class SaveEmployeeRequestPojo {
 
-    @XmlElement(required = true)
+    @XmlElement(name="employee", namespace="http://parameta.co/technical/test/employee", required=true)
     protected EmployeePojo employee;
 
 

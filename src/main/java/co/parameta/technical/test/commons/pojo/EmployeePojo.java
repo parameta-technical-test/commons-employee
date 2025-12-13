@@ -7,10 +7,7 @@
 
 package co.parameta.technical.test.commons.pojo;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlSchemaType;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.*;
 import lombok.Data;
 
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -67,14 +64,17 @@ public class EmployeePojo {
     protected Integer id;
     protected String names;
     protected String lastNames;
+    @XmlElement(name="typeDocument", namespace="http://parameta.co/technical/test/employee")
     protected TypeDocumentPojo typeDocument;
     protected String documentNumber;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateOfBirth;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateAffiliationCompany;
+    @XmlElement(name="position", namespace="http://parameta.co/technical/test/employee")
     protected PositionPojo position;
     protected BigDecimal salary;
+    @XmlElement(name="administratorUser", namespace="http://parameta.co/technical/test/employee")
     protected AdministratorUserPojo administratorUser;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateCreate;
