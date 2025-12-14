@@ -32,4 +32,7 @@ public class EmployeeDTO {
 
     private Date dateCreate;
     private Date dateUpdate;
+
+    private String storageLocationReport;
+
 }
