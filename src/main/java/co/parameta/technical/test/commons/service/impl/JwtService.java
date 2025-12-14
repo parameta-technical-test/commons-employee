@@ -23,6 +23,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 /**
@@ -68,7 +69,7 @@ public class JwtService implements IJwtService {
     @Override
     public String getToken(UserDetails userDetails) {
         Map<String, Object> additionalClaims = new HashMap<>();
-        long expirationTimeInMillis = 24 * 60 * 60 * 1000;
+        long expirationTimeInMillis = TimeUnit.DAYS.toMillis(1);
         if (userDetails instanceof AdministratorUserDTO administratorUser) {
             additionalClaims.put("sub", administratorUser.getEmail());
             additionalClaims.put("code", administratorUser.getCode());
@@ -84,8 +85,7 @@ public class JwtService implements IJwtService {
      */
     @Override
     public String getUsernameFromToken(String token) {
-        String claims = getClaims(token, Claims::getSubject);
-        return claims;
+        return getClaims(token, Claims::getSubject);
     }
 
     /**
@@ -190,7 +190,10 @@ public class JwtService implements IJwtService {
         }
         try {
             SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64URL.decode(secretKey));
-            Jwts.parser().setSigningKey(key).build().parseClaimsJws(token);
+            Jwts.parser()
+                    .verifyWith(key)
+                    .build()
+                    .parseSignedClaims(token);
             return TokenStatusEnum.VALID;
         } catch (ExpiredJwtException ex) {
             log.error(ex.getMessage());
@@ -241,11 +244,15 @@ public class JwtService implements IJwtService {
      * @return parsed token claims
      */
     private Claims getAllClaims(String token) {
+        SecretKey key = Keys.hmacShaKeyFor(
+                Decoders.BASE64URL.decode(secretKey)
+        );
+
         return Jwts.parser()
-                .setSigningKey(Keys.hmacShaKeyFor(Decoders.BASE64URL.decode(secretKey)))
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token)
-                .getBody();
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
 

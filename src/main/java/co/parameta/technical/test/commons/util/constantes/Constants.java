@@ -35,7 +35,7 @@ public final class Constants {
      * <p>
      * Patterns include common ISO formats and regional formats.
      */
-    public static final List<String> DATE_PATTERNS = Arrays.asList(
+    public static final  List<String> DATE_PATTERNS = Arrays.asList(
             "yyyy-MM-dd HH:mm:ss.SSS",
             "yyyy-MM-dd HH:mm:ss.S",
             "yyyy-MM-dd HH:mm:ss",

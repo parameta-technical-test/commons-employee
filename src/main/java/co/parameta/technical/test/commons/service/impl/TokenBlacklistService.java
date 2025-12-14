@@ -6,6 +6,7 @@ import co.parameta.technical.test.commons.dto.ResponseGeneralDTO;
 import co.parameta.technical.test.commons.repository.BlacklistTokenRepository;
 import co.parameta.technical.test.commons.service.IJwtService;
 import co.parameta.technical.test.commons.service.ITokenBlacklistService;
+import co.parameta.technical.test.commons.util.exception.MensajePersonalizadoException;
 import co.parameta.technical.test.commons.util.mapper.BlacklistTokenMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         ResponseGeneralDTO response = new ResponseGeneralDTO();
 
         if (!StringUtils.hasText(token)) {
-            throw new RuntimeException("Null or empty token");
+            throw new MensajePersonalizadoException("Null or empty token");
         }
 
         token = token.trim();
@@ -66,7 +67,7 @@ public class TokenBlacklistService implements ITokenBlacklistService {
         }
 
         if (!StringUtils.hasText(token)) {
-            throw new RuntimeException("Token malformed after removing 'Bearer ' prefix");
+            throw new MensajePersonalizadoException("Token malformed after removing 'Bearer ' prefix");
         }
 
         BlacklistTokenDTO blacklistTokenDTO = new BlacklistTokenDTO();
