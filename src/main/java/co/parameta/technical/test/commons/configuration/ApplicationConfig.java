@@ -36,7 +36,6 @@ public class ApplicationConfig {
      *
      * @param config Spring authentication configuration
      * @return configured {@link AuthenticationManager}
-     * @throws Exception if the manager cannot be created
      */
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) {

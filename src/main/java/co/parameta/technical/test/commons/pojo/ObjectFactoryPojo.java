@@ -26,6 +26,12 @@ public class ObjectFactoryPojo {
             new QName("http://parameta.co/technical/test/employee", "Employee");
 
     /**
+     * Default constructor.
+     */
+    public ObjectFactoryPojo() {
+    }
+
+    /**
      * Creates a new {@link EmployeePojo} instance.
      *
      * @return a new EmployeePojo
