@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
@@ -146,5 +149,44 @@ public final class GeneralUtil {
             return defaultValue;
         }
     }
+
+    public static Map<String, Integer> diff(
+            Date startDate,
+            Date endDate
+    ) {
+
+        Map<String, Integer> result = new HashMap<>();
+        result.put("years", 0);
+        result.put("months", 0);
+        result.put("days", 0);
+
+        if (startDate == null || endDate == null) return result;
+
+        ZoneId zone = ZoneId.of("America/Bogota");
+
+        LocalDate start = startDate.toInstant().atZone(zone).toLocalDate();
+        LocalDate end = endDate.toInstant().atZone(zone).toLocalDate();
+
+        if (end.isBefore(start)) {
+            LocalDate tmp = start;
+            start = end;
+            end = tmp;
+        }
+
+        int years = (int) ChronoUnit.YEARS.between(start, end);
+
+        int months = years * 12;
+
+        LocalDate anniversary = start.plusYears(years);
+        int days = (int) ChronoUnit.DAYS.between(start, anniversary);
+
+        result.put("years", years);
+        result.put("months", months);
+        result.put("days", days);
+
+        return result;
+    }
+
+
 
 }

@@ -9,7 +9,8 @@ import static co.parameta.technical.test.commons.util.constantes.Constants.NS;
 @XmlType(
         name = "AdministratorUser",
         propOrder = {
-                "code"
+                "code",
+                "email"
         }
 )
 @Data
@@ -17,4 +18,8 @@ public class AdministratorUserPojo {
 
     @XmlElement(name = "code", namespace = NS)
     protected String code;
+
+    @XmlElement(name = "email", namespace = NS)
+    private String email;
+
 }
