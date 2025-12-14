@@ -60,4 +60,10 @@ public class ScriptValidationEntity {
     @Column(name = "state")
     private int state;
 
+    /**
+     *  Indicates the group of script
+     * */
+    @Column(name = "group")
+    private String group;
+
 }

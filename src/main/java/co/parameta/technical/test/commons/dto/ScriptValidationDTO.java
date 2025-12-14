@@ -44,4 +44,9 @@ public class ScriptValidationDTO {
      */
     private int state;
 
+    /**
+     *  Indicates the group of script
+     * */
+    private String group;
+
 }
