@@ -5,6 +5,13 @@ import lombok.Data;
 
 import static co.parameta.technical.test.commons.util.constantes.Constants.NS;
 
+/**
+ * SOAP request wrapper used to save or update an employee.
+ * <p>
+ * This class represents the root element of the SOAP request
+ * sent to the employee service, containing the employee data
+ * to be persisted or updated.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(
         name = "",
@@ -19,6 +26,9 @@ import static co.parameta.technical.test.commons.util.constantes.Constants.NS;
 @Data
 public class SaveEmployeeRequestPojo {
 
+    /**
+     * Employee information to be saved or updated.
+     */
     @XmlElement(
             name = "employee",
             namespace = NS,

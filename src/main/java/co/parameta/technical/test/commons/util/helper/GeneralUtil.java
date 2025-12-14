@@ -14,11 +14,28 @@ import java.util.function.Supplier;
 import static co.parameta.technical.test.commons.util.constantes.Constants.CONVERTERS;
 import static co.parameta.technical.test.commons.util.constantes.Constants.DATE_PATTERNS;
 
+/**
+ * General-purpose utility class providing safe conversions, date handling,
+ * null-safe accessors, and common helper methods used across the application.
+ * <p>
+ * This class centralizes repetitive logic such as:
+ * <ul>
+ *   <li>Type-safe value conversion</li>
+ *   <li>Date parsing and transformation</li>
+ *   <li>Null-safe value retrieval</li>
+ *   <li>Date difference calculation</li>
+ * </ul>
+ */
 public final class GeneralUtil {
 
     private GeneralUtil() {}
 
-
+    /**
+     * Initializes default converters for common data types.
+     * <p>
+     * These converters are used internally to safely map raw values
+     * (e.g. from JDBC or external services) to strongly typed objects.
+     */
     static {
         CONVERTERS.put(Long.class,    GeneralUtil::toLong);
         CONVERTERS.put(Integer.class, GeneralUtil::toInteger);
@@ -26,9 +43,15 @@ public final class GeneralUtil {
         CONVERTERS.put(Boolean.class, GeneralUtil::toBoolean);
         CONVERTERS.put(String.class,  v -> v == null ? null : v.toString());
         CONVERTERS.put(Date.class,    GeneralUtil::toDate);
-        CONVERTERS.put(Instant.class,        GeneralUtil::toInstant);
+        CONVERTERS.put(Instant.class, GeneralUtil::toInstant);
     }
 
+    /**
+     * Converts the given value to {@link Long}, if possible.
+     *
+     * @param v input value
+     * @return converted {@link Long} or {@code null} if conversion fails
+     */
     private static Long toLong(Object v) {
         if (v == null) return null;
         if (v instanceof Number n) return n.longValue();
@@ -44,11 +67,23 @@ public final class GeneralUtil {
         return null;
     }
 
+    /**
+     * Converts the given value to {@link Integer}.
+     *
+     * @param v input value
+     * @return converted {@link Integer} or {@code null}
+     */
     private static Integer toInteger(Object v) {
         Long l = toLong(v);
         return (l == null) ? null : l.intValue();
     }
 
+    /**
+     * Converts the given value to {@link Double}.
+     *
+     * @param v input value
+     * @return converted {@link Double} or {@code null}
+     */
     private static Double toDouble(Object v) {
         if (v == null) return null;
         if (v instanceof Number n) return n.doubleValue();
@@ -64,6 +99,12 @@ public final class GeneralUtil {
         return null;
     }
 
+    /**
+     * Converts the given value to {@link Boolean}.
+     *
+     * @param v input value
+     * @return converted {@link Boolean} or {@code null}
+     */
     private static Boolean toBoolean(Object v) {
         if (v == null) return null;
         if (v instanceof Boolean b) return b;
@@ -72,14 +113,19 @@ public final class GeneralUtil {
             String x = s.trim().toLowerCase(Locale.ROOT);
             return switch (x) {
                 case "true","t","1","yes","y","si","sí" -> true;
-                case "false","f","0","no","n"            -> false;
+                case "false","f","0","no","n"          -> false;
                 default -> null;
             };
         }
         return null;
     }
 
-
+    /**
+     * Converts the given value to {@link Date} using supported date patterns.
+     *
+     * @param value input value
+     * @return parsed {@link Date} or {@code null}
+     */
     private static Date toDate(Object value) {
         if (value == null) return null;
         if (value instanceof Date d) return d;
@@ -97,6 +143,12 @@ public final class GeneralUtil {
         return null;
     }
 
+    /**
+     * Converts the given value to {@link Instant}.
+     *
+     * @param v input value
+     * @return parsed {@link Instant} or {@code null}
+     */
     private static Instant toInstant(Object v) {
         if (v == null) return null;
         if (v instanceof Instant i) return i;
@@ -112,7 +164,15 @@ public final class GeneralUtil {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
+    /**
+     * Safely maps an array element to a target type.
+     *
+     * @param array input array
+     * @param index index to read
+     * @param type expected type
+     * @param defaultValue fallback value
+     * @return mapped value or default
+     */
     public static <T> T mapToValueObject(Object[] array, int index, Class<T> type, T defaultValue) {
         if (array == null || index < 0 || index >= array.length) {
             return defaultValue;
@@ -120,6 +180,14 @@ public final class GeneralUtil {
         return mapToValueObject(array[index], type, defaultValue);
     }
 
+    /**
+     * Converts a value to a target type using registered converters.
+     *
+     * @param value input value
+     * @param type expected type
+     * @param defaultValue fallback value
+     * @return converted value or default
+     */
     @SuppressWarnings("unchecked")
     public static <T> T mapToValueObject(Object value, Class<T> type, T defaultValue) {
         if (value == null || (value instanceof String s && s.trim().isEmpty())) {
@@ -141,6 +209,13 @@ public final class GeneralUtil {
         }
     }
 
+    /**
+     * Executes a supplier in a null-safe manner.
+     *
+     * @param supplier value supplier
+     * @param defaultValue fallback value
+     * @return supplied value or default
+     */
     public static <T> T get(Supplier<T> supplier, T defaultValue) {
         try {
             T value = supplier.get();
@@ -150,10 +225,14 @@ public final class GeneralUtil {
         }
     }
 
-    public static Map<String, Integer> diff(
-            Date startDate,
-            Date endDate
-    ) {
+    /**
+     * Calculates the difference between two dates in years, months, and days.
+     *
+     * @param startDate start date
+     * @param endDate end date
+     * @return map containing {@code years}, {@code months}, and {@code days}
+     */
+    public static Map<String, Integer> diff(Date startDate, Date endDate) {
 
         Map<String, Integer> result = new HashMap<>();
         result.put("years", 0);
@@ -174,9 +253,7 @@ public final class GeneralUtil {
         }
 
         int years = (int) ChronoUnit.YEARS.between(start, end);
-
         int months = years * 12;
-
         LocalDate anniversary = start.plusYears(years);
         int days = (int) ChronoUnit.DAYS.between(start, anniversary);
 
@@ -186,7 +263,5 @@ public final class GeneralUtil {
 
         return result;
     }
-
-
 
 }
